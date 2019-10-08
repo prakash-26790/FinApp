@@ -6,7 +6,7 @@
        xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:cache="http://www.springframework.org/schema/cache"
-       xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/aop
          http://www.springframework.org/schema/aop/spring-aop.xsd
          http://www.springframework.org/schema/beans
@@ -34,13 +34,16 @@
     -->
     <context:mbean-export/>
 
-    <!-- Enables scanning for @Cacheable annotation -->
+    <!-- enables scanning for @Cacheable annotation -->
     <cache:annotation-driven/>
 
-    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager"
-        p:cacheManager-ref="ehcache"/>
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+        <property name="cacheManager" ref="ehcache"/>
+    </bean>
 
-    <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
-        p:configLocation="classpath:cache/ehcache.xml"/>
+    <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation" value="classpath:cache/ehcache.xml"/>
+    </bean>
+
 
 </beans>

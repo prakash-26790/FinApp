@@ -47,7 +47,6 @@ import org.springframework.stereotype.Repository;
  * @author Sam Brannen
  * @author Thomas Risberg
  * @author Mark Fisher
- * @author Antoine Rey
  */
 @Repository
 public class JdbcOwnerRepositoryImpl implements OwnerRepository {
@@ -57,7 +56,7 @@ public class JdbcOwnerRepositoryImpl implements OwnerRepository {
     private SimpleJdbcInsert insertOwner;
 
     @Autowired
-    public JdbcOwnerRepositoryImpl(DataSource dataSource) {
+    public JdbcOwnerRepositoryImpl(DataSource dataSource, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
 
         this.insertOwner = new SimpleJdbcInsert(dataSource)
             .withTableName("owners")
@@ -112,7 +111,7 @@ public class JdbcOwnerRepositoryImpl implements OwnerRepository {
         Map<String, Object> params = new HashMap<>();
         params.put("id", owner.getId());
         final List<JdbcPet> pets = this.namedParameterJdbcTemplate.query(
-            "SELECT pets.id, name, birth_date, type_id, owner_id, visits.id as visit_id, visit_date, description, pet_id FROM pets LEFT OUTER JOIN visits ON pets.id = pet_id WHERE owner_id=:id ORDER BY pet_id",
+            "SELECT pets.id, name, birth_date, type_id, owner_id, visits.id as visit_id, visit_date, description, pet_id FROM pets LEFT OUTER JOIN visits ON  pets.id = pet_id WHERE owner_id=:id",
             params,
             new JdbcPetVisitExtractor()
         );

@@ -7,11 +7,20 @@
 
 <petclinic:layout pageName="owners">
 
-    <h2>Find Owners</h2>
+    <h2>Customers</h2>
 
     <spring:url value="/owners.html" var="formUrl"/>
     <form:form modelAttribute="owner" action="${fn:escapeXml(formUrl)}" method="get" class="form-horizontal"
                id="search-owner-form">
+			   
+		<div class="row">
+			<div class="col-md-12 imgbox">
+		     <spring:url value="/resources/images/customer.jpg" htmlEscape="true" var="cusImage"/>
+            <img class="center-fit img-responsive" src="${cusImage}"/>
+			
+			</div>
+		</div>
+	
         <div class="form-group">
             <div class="control-group" id="lastName">
                 <label class="col-sm-2 control-label">Last name </label>
@@ -23,12 +32,12 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">Find Owner</button>
+                <button type="submit" class="btn btn-default">Find Customers</button>
             </div>
         </div>
 
     </form:form>
 
     <br/>
-    <a class="btn btn-default" href='<spring:url value="/owners/new" htmlEscape="true"/>'>Add Owner</a>
+    <a class="btn btn-default" href='<spring:url value="/owners/new" htmlEscape="true"/>'>Add Customers</a>
 </petclinic:layout>

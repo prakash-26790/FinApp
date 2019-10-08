@@ -4,11 +4,12 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <petclinic:layout pageName="home">
-    <h2><fmt:message key="welcome"/></h2>
+    <!--  <h2> Welcome to Our Financial Advisory Appointments </h2>  -->
     <div class="row">
-        <div class="col-md-12">
-            <spring:url value="/resources/images/pets.png" htmlEscape="true" var="petsImage"/>
-            <img class="img-responsive" src="${petsImage}"/>
+        <div class="col-md-12 imgbox">
+		     <spring:url value="/resources/images/1.png" htmlEscape="true" var="petsImage"/>
+            <img class="center-fit img-responsive" src="${petsImage}"/>
+			
         </div>
     </div>
 </petclinic:layout>

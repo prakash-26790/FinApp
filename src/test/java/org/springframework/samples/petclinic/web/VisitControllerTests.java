@@ -1,25 +1,31 @@
 package org.springframework.samples.petclinic.web;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.petclinic.model.Pet;
-import org.springframework.samples.petclinic.service.ClinicService;
-import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 /**
  * Test class for {@link VisitController}
  *
  * @author Colin But
  */
-@SpringJUnitWebConfig(locations = {"classpath:spring/mvc-core-config.xml", "classpath:spring/mvc-test-config.xml"})
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration({"classpath:spring/business-config.xml", "classpath:spring/tools-config.xml", "classpath:spring/mvc-core-config.xml"})
+@WebAppConfiguration
+@ActiveProfiles("spring-data-jpa")
 public class VisitControllerTests {
 
     private static final int TEST_PET_ID = 1;
@@ -27,16 +33,11 @@ public class VisitControllerTests {
     @Autowired
     private VisitController visitController;
 
-    @Autowired
-    private ClinicService clinicService;
-
     private MockMvc mockMvc;
 
-    @BeforeEach
+    @Before
     public void setup() {
         this.mockMvc = MockMvcBuilders.standaloneSetup(visitController).build();
-
-        given(this.clinicService.findPetById(TEST_PET_ID)).willReturn(new Pet());
     }
 
     @Test

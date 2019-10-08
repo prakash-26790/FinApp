@@ -1,12 +1,10 @@
-# Eclipse
-.settings/
+target/*
+.settings/*
 .classpath
 .project
-bin/
-
-# IntelliJ IDEA
 .idea
 *.iml
+/target
 
-# Maven
-target/
+generated/
+/bin/

@@ -1,22 +1,29 @@
 package org.springframework.samples.petclinic.web;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
  * Test class for {@link CrashController}
  *
  * @author Colin But
  */
-@SpringJUnitWebConfig(locations = {"classpath:spring/mvc-core-config.xml", "classpath:spring/mvc-test-config.xml"})
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration({"classpath:spring/business-config.xml", "classpath:spring/tools-config.xml", "classpath:spring/mvc-core-config.xml"})
+@WebAppConfiguration
+@ActiveProfiles("spring-data-jpa")
 public class CrashControllerTests {
 
     @Autowired
@@ -27,7 +34,7 @@ public class CrashControllerTests {
 
     private MockMvc mockMvc;
 
-    @BeforeEach
+    @Before
     public void setup() {
         this.mockMvc = MockMvcBuilders
             .standaloneSetup(crashController)

@@ -17,10 +17,11 @@ package org.springframework.samples.petclinic.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.time.LocalDate;
 import java.util.Collection;
 
-import org.junit.jupiter.api.Test;
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
@@ -135,7 +136,7 @@ public abstract class AbstractClinicServiceTests {
         pet.setName("bowser");
         Collection<PetType> types = this.clinicService.findPetTypes();
         pet.setType(EntityUtils.getById(types, PetType.class, 2));
-        pet.setBirthDate(LocalDate.now());
+        pet.setBirthDate(new LocalDate());
         owner6.addPet(pet);
         assertThat(owner6.getPets().size()).isEqualTo(found + 1);
 

@@ -15,9 +15,11 @@
  */
 package org.springframework.samples.petclinic.model;
 
-import org.springframework.beans.support.MutableSortDefinition;
-import org.springframework.beans.support.PropertyComparator;
-import org.springframework.format.annotation.DateTimeFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -28,12 +30,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import org.hibernate.annotations.Type;
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
+import org.springframework.beans.support.MutableSortDefinition;
+import org.springframework.beans.support.PropertyComparator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * Simple business object representing a pet.
@@ -47,6 +49,7 @@ import java.util.Set;
 public class Pet extends NamedEntity {
 
     @Column(name = "birth_date")
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     @DateTimeFormat(pattern = "yyyy/MM/dd")
     private LocalDate birthDate;
 
@@ -61,13 +64,12 @@ public class Pet extends NamedEntity {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet", fetch = FetchType.EAGER)
     private Set<Visit> visits;
 
+    public LocalDate getBirthDate() {
+        return this.birthDate;
+    }
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
-    }
-
-    public LocalDate getBirthDate() {
-        return this.birthDate;
     }
 
     public PetType getType() {

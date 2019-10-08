@@ -14,32 +14,30 @@
     </jsp:attribute>
     <jsp:body>
         <h2>
-            <c:if test="${pet['new']}">New </c:if> Pet
+            <c:if test="${pet['new']}">New </c:if> Appointment
         </h2>
         <form:form modelAttribute="pet"
                    class="form-horizontal">
             <input type="hidden" name="id" value="${pet.id}"/>
             <div class="form-group has-feedback">
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Owner</label>
+                    <label class="col-sm-2 control-label">Customer</label>
                     <div class="col-sm-10">
                         <c:out value="${pet.owner.firstName} ${pet.owner.lastName}"/>
                     </div>
                 </div>
                 <petclinic:inputField label="Name" name="name"/>
-                <petclinic:inputField label="Birth Date" name="birthDate"/>
-                <div class="control-group">
-                    <petclinic:selectField name="type" label="Type " names="${types}" size="5"/>
-                </div>
+                <petclinic:inputField label="Appointment Date" name="birthDate"/>
+                
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <c:choose>
                         <c:when test="${pet['new']}">
-                            <button class="btn btn-default" type="submit">Add Pet</button>
+                            <button class="btn btn-default" type="submit">Add Appointment</button>
                         </c:when>
                         <c:otherwise>
-                            <button class="btn btn-default" type="submit">Update Pet</button>
+                            <button class="btn btn-default" type="submit">Update Appointment</button>
                         </c:otherwise>
                     </c:choose>
                 </div>

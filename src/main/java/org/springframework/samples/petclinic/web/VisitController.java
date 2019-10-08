@@ -26,7 +26,11 @@ import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * @author Juergen Hoeller
@@ -51,7 +55,7 @@ public class VisitController {
     }
 
     /**
-     * Called before each and every @GetMapping or @PostMapping annotated method.
+     * Called before each and every @RequestMapping annotated method.
      * 2 goals:
      * - Make sure we always have fresh data
      * - Since we do not use the session scope, make sure that Pet object always has an id
@@ -69,13 +73,13 @@ public class VisitController {
     }
 
     // Spring MVC calls method loadPetWithVisit(...) before initNewVisitForm is called
-    @GetMapping(value = "/owners/*/pets/{petId}/visits/new")
+    @RequestMapping(value = "/owners/*/pets/{petId}/visits/new", method = RequestMethod.GET)
     public String initNewVisitForm(@PathVariable("petId") int petId, Map<String, Object> model) {
         return "pets/createOrUpdateVisitForm";
     }
 
     // Spring MVC calls method loadPetWithVisit(...) before processNewVisitForm is called
-    @PostMapping(value = "/owners/{ownerId}/pets/{petId}/visits/new")
+    @RequestMapping(value = "/owners/{ownerId}/pets/{petId}/visits/new", method = RequestMethod.POST)
     public String processNewVisitForm(@Valid Visit visit, BindingResult result) {
         if (result.hasErrors()) {
             return "pets/createOrUpdateVisitForm";
@@ -85,7 +89,7 @@ public class VisitController {
         }
     }
 
-    @GetMapping(value = "/owners/*/pets/{petId}/visits")
+    @RequestMapping(value = "/owners/*/pets/{petId}/visits", method = RequestMethod.GET)
     public String showVisits(@PathVariable int petId, Map<String, Object> model) {
         model.put("visits", this.clinicService.findPetById(petId).getVisits());
         return "visitList";

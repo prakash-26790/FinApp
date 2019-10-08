@@ -17,6 +17,7 @@ package org.springframework.samples.petclinic.repository.jdbc;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
@@ -76,7 +77,7 @@ public class JdbcVisitRepositoryImpl implements VisitRepository {
     private MapSqlParameterSource createVisitParameterSource(Visit visit) {
         return new MapSqlParameterSource()
             .addValue("id", visit.getId())
-            .addValue("visit_date", visit.getDate())
+            .addValue("visit_date", visit.getDate().toDate())
             .addValue("description", visit.getDescription())
             .addValue("pet_id", visit.getPet().getId());
     }
@@ -91,13 +92,13 @@ public class JdbcVisitRepositoryImpl implements VisitRepository {
                 new JdbcPetRowMapper());
 
         List<Visit> visits = this.jdbcTemplate.query(
-            "SELECT id as visit_id, visit_date, description FROM visits WHERE pet_id=:id",
+            "SELECT id as visit_id, visit_date, description FROM visits WHERE pet_id=:id", 
             params, new JdbcVisitRowMapper());
-
+        
         for (Visit visit: visits) {
             visit.setPet(pet);
         }
-
+        
         return visits;
     }
 

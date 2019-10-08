@@ -4,23 +4,41 @@ INSERT INTO vets VALUES (3, 'Linda', 'Douglas');
 INSERT INTO vets VALUES (4, 'Rafael', 'Ortega');
 INSERT INTO vets VALUES (5, 'Henry', 'Stevens');
 INSERT INTO vets VALUES (6, 'Sharon', 'Jenkins');
+INSERT INTO vets VALUES (7, 'Doug', 'Fuller');
+INSERT INTO vets VALUES (8, 'Warren', 'Sanders');
+INSERT INTO vets VALUES (9, 'Ella', 'Clayton');
+INSERT INTO vets VALUES (10, 'Prakash', 'Kumar');
 
-INSERT INTO specialties VALUES (1, 'radiology');
-INSERT INTO specialties VALUES (2, 'surgery');
-INSERT INTO specialties VALUES (3, 'dentistry');
+INSERT INTO specialties VALUES (1, 'Insurence');
+INSERT INTO specialties VALUES (2, 'Share Market');
+INSERT INTO specialties VALUES (3, 'Banking');
+INSERT INTO specialties VALUES (4, 'Mutual Funds');
+INSERT INTO specialties VALUES (5, 'Share Market');
+INSERT INTO specialties VALUES (6, 'Banking');
+INSERT INTO specialties VALUES (7, 'Accounting');
+INSERT INTO specialties VALUES (8, 'Budgeting');
+INSERT INTO specialties VALUES (9, 'IncomeTax');
+INSERT INTO specialties VALUES (10, 'Audit');
+
 
 INSERT INTO vet_specialties VALUES (2, 1);
 INSERT INTO vet_specialties VALUES (3, 2);
 INSERT INTO vet_specialties VALUES (3, 3);
 INSERT INTO vet_specialties VALUES (4, 2);
-INSERT INTO vet_specialties VALUES (5, 1);
+INSERT INTO vet_specialties VALUES (5, 7);
+INSERT INTO vet_specialties VALUES (1, 6);
+INSERT INTO vet_specialties VALUES (6, 8);
+INSERT INTO vet_specialties VALUES (8, 4);
+INSERT INTO vet_specialties VALUES (7, 2);
+INSERT INTO vet_specialties VALUES (9, 10);
+INSERT INTO vet_specialties VALUES (10, 1);
 
-INSERT INTO types VALUES (1, 'cat');
-INSERT INTO types VALUES (2, 'dog');
-INSERT INTO types VALUES (3, 'lizard');
-INSERT INTO types VALUES (4, 'snake');
-INSERT INTO types VALUES (5, 'bird');
-INSERT INTO types VALUES (6, 'hamster');
+INSERT INTO types VALUES (1, 'Cash Flow');
+INSERT INTO types VALUES (2, 'Invesment');
+INSERT INTO types VALUES (3, 'Tax Planning');
+INSERT INTO types VALUES (4, 'Retirement');
+INSERT INTO types VALUES (5, 'Fixed Income');
+INSERT INTO types VALUES (6, 'Future Invesment');
 
 INSERT INTO owners VALUES (1, 'George', 'Franklin', '110 W. Liberty St.', 'Madison', '6085551023');
 INSERT INTO owners VALUES (2, 'Betty', 'Davis', '638 Cardinal Ave.', 'Sun Prairie', '6085551749');
@@ -47,7 +65,7 @@ INSERT INTO pets VALUES (11, 'Freddy', '2010-03-09', 5, 9);
 INSERT INTO pets VALUES (12, 'Lucky', '2010-06-24', 2, 10);
 INSERT INTO pets VALUES (13, 'Sly', '2012-06-08', 1, 10);
 
-INSERT INTO visits VALUES (1, 7, '2013-01-01', 'rabies shot');
-INSERT INTO visits VALUES (2, 8, '2013-01-02', 'rabies shot');
-INSERT INTO visits VALUES (3, 8, '2013-01-03', 'neutered');
-INSERT INTO visits VALUES (4, 7, '2013-01-04', 'spayed');
+INSERT INTO visits VALUES (1, 7, '2013-01-01', 'Enquiry');
+INSERT INTO visits VALUES (2, 8, '2013-01-02', 'Customer');
+INSERT INTO visits VALUES (3, 8, '2013-01-03', 'Enquiry');
+INSERT INTO visits VALUES (4, 7, '2013-01-04', 'Customer');

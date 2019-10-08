@@ -1,7 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <%--
-PetClinic :: a Spring Framework demonstration
+Financial Advisory Appointments
 --%>
 
 <head>
@@ -14,7 +14,7 @@ PetClinic :: a Spring Framework demonstration
     <spring:url value="/resources/images/favicon.png" var="favicon"/>
     <link rel="shortcut icon" type="image/x-icon" href="${favicon}">
 
-    <title>PetClinic :: a Spring Framework demonstration</title>
+    <title>Financial Advisory Appointments</title>
 
     <%-- CSS generated from LESS --%>
     <spring:url value="/resources/css/petclinic.css" var="petclinicCss"/>
@@ -28,8 +28,10 @@ PetClinic :: a Spring Framework demonstration
     <![endif]-->
 
     <!-- Only datepicker is used -->
-    <spring:url value="/webjars/jquery-ui/1.11.4/jquery-ui.min.css" var="jQueryUiCss"/>
+    <spring:url value="/vendors/jquery-ui/themes/base/minified/jquery-ui.min.css" var="jQueryUiCss"/>
     <link href="${jQueryUiCss}" rel="stylesheet"/>
-    <spring:url value="/webjars/jquery-ui/1.11.4/jquery-ui.theme.min.css" var="jQueryUiThemeCss"/>
+    <spring:url value="/vendors/jquery-ui/themes/base/minified/jquery.ui.theme.min.css" var="jQueryUiThemeCss"/>
     <link href="${jQueryUiThemeCss}" rel="stylesheet"/>
+    <spring:url value="/vendors/jquery-ui/themes/base/minified/jquery.ui.datepicker.min.css" var="jQueryUiDatePickerCss"/>
+    <link href="${jQueryUiDatePickerCss}" rel="stylesheet"/>
 </head>
