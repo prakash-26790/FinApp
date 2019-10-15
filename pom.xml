@@ -3,10 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.springframework.samples</groupId>
-    <artifactId>finance</artifactId>
+    <artifactId>finapp</artifactId>
     <version>1.0</version>
 
-    <name>finance</name>
+    <name>finapp</name>
     <packaging>war</packaging>
 
     <properties>
@@ -312,7 +312,7 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.3</version>
                 <configuration>
-                    <warName>finance</warName>
+                    <warName>finapp</warName>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
