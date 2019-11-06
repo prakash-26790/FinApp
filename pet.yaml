@@ -2,11 +2,11 @@
 apiVersion: v1
 kind: Pod
 metadata: 
-  name: marks-dummy-pod
+  name: pet-pod
 spec: 
   containers: 
     - 
       image: "fastprakash/petclinic:latest"
-      name: marks-dummy-pod
+      name: pet-container
   restartPolicy: Never
 
